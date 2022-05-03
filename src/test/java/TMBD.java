@@ -62,10 +62,19 @@ public class TMBD {
     }
 
     //Clear list
+    @Test
+    public void clearList(){
+        GetRequest getRequest = new GetRequest();
+        PostRequest postRequest = new PostRequest();
+        int idMovie = 760868;
+
+        postRequest.createList("Nombre de la lista","Desc","en");
+        postRequest.addMovie(idMovie,postRequest.getList_id());
+        getRequest.checkMovieStatus(idMovie,postRequest.getList_id());
+        postRequest.clearList(postRequest.getList_id());
+    }
 
 
-
-    //Delete list
 
 
 

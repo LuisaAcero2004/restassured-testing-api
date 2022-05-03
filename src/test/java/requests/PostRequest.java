@@ -89,7 +89,7 @@ public class PostRequest extends SetProperties {
                 .put("name",listName)
                 .put("description",listDescription)
                 .put("language",listLanguage);
-        Response response = (Response) given()
+        Response response = given()
                 .contentType(ContentType.JSON)
                 .queryParam("api_key",getApi_key())
                 .queryParam("session_id",this.session_id)
@@ -110,7 +110,7 @@ public class PostRequest extends SetProperties {
 
         jsonObject
                 .put("media_id",idMovie);
-        Response response = (Response) given()
+        Response response = given()
                 .contentType(ContentType.JSON)
                 .queryParam("api_key",getApi_key())
                 .queryParam("session_id",this.session_id)
@@ -125,7 +125,23 @@ public class PostRequest extends SetProperties {
 
     }
 
+    public void clearList(String idList){
+        Response response = given()
+                .queryParam("api_key",getApi_key())
+                .queryParam("session_id",this.session_id)
+                .queryParam("confirm",true)
+                .post(getBase_url() + list + "/" + idList + "/clear")
+                .then()
+                .statusCode(201)
+                .extract().response();
+
+        Assert.assertEquals("true", response.jsonPath().getString("success"));
+        Assert.assertEquals("The item/record was updated successfully.", response.jsonPath().getString("status_message"));
+
+    }
+
     public String getList_id() {
         return list_id;
     }
+
 }

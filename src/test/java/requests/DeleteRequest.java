@@ -11,6 +11,7 @@ public class DeleteRequest extends SetProperties {
     private String deleteMovieRate = "/movie/";
     PostRequest postRequest = new PostRequest();
 
+
     public DeleteRequest(){
         super();
     }
