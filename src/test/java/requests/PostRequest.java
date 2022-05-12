@@ -144,4 +144,7 @@ public class PostRequest extends SetProperties {
         return list_id;
     }
 
+    public String getSession_id() {
+        return session_id;
+    }
 }

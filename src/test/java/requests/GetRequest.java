@@ -31,7 +31,7 @@ public class GetRequest extends SetProperties {
 
     public void checkMovieStatus(int idMovie,String idList){
 
-        Response response = (Response) given()
+        Response response = given()
                 .queryParam("api_key",getApi_key())
                 .queryParam("movie_id",idMovie)
                 .when()

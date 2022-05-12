@@ -31,6 +31,8 @@ public class TMBD {
     @Test
     public void deleteRate() {
         DeleteRequest deleteRequest = new DeleteRequest();
+        PostRequest postRequest = new PostRequest();
+        postRequest.rateMovie(760868, 8);
         deleteRequest.deleteRating(760868);
     }
 
@@ -72,6 +74,20 @@ public class TMBD {
         postRequest.addMovie(idMovie,postRequest.getList_id());
         getRequest.checkMovieStatus(idMovie,postRequest.getList_id());
         postRequest.clearList(postRequest.getList_id());
+    }
+
+    //Delete session
+    @Test
+    public void deleteSession(){
+        PostRequest postRequest = new PostRequest();
+        DeleteRequest deleteRequest = new DeleteRequest();
+        postRequest.createSession();
+        String idSession = postRequest.getSession_id();
+        deleteRequest.deleteSession(idSession);
+
+
+
+
     }
 
 
